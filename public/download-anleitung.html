@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HB Montageservice App - Download Anleitung</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background: linear-gradient(135deg, #1e40af, #3b82f6);
+            color: white;
+            min-height: 100vh;
+        }
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        .logo {
+            width: 120px;
+            height: 120px;
+            background: white;
+            border-radius: 20px;
+            margin: 0 auto 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 36px;
+            font-weight: bold;
+            color: #1e40af;
+        }
+        .url-box {
+            background: rgba(255,255,255,0.1);
+            border-radius: 15px;
+            padding: 20px;
+            margin: 20px 0;
+            backdrop-filter: blur(10px);
+        }
+        .url-text {
+            font-size: 18px;
+            font-weight: bold;
+            background: white;
+            color: #1e40af;
+            padding: 15px;
+            border-radius: 10px;
+            word-break: break-all;
+            margin: 10px 0;
+        }
+        .platform {
+            margin: 20px 0;
+            padding: 20px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 10px;
+            text-align: left;
+        }
+        .step {
+            margin: 10px 0;
+            padding: 10px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 8px;
+            border-left: 4px solid #10b981;
+        }
+        .download-btn {
+            display: inline-block;
+            background: white;
+            color: #1e40af;
+            padding: 15px 30px;
+            border-radius: 10px;
+            text-decoration: none;
+            font-weight: bold;
+            margin: 10px;
+            transition: transform 0.2s;
+        }
+        .download-btn:hover {
+            transform: scale(1.05);
+        }
+        .qr-section {
+            background: white;
+            color: #1e40af;
+            padding: 20px;
+            border-radius: 15px;
+            margin: 20px 0;
+        }
+        .features {
+            text-align: left;
+            margin: 20px 0;
+        }
+        .features li {
+            margin: 10px 0;
+            padding-left: 20px;
+            position: relative;
+        }
+        .features li:before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: #10b981;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="logo">
+            HB
+        </div>
+        
+        <h1>HB Montageservice App</h1>
+        <p>Professionelle Montage-App für Techniker</p>
+        <p><strong>In der Wisch 1-3, 28205 Bremen</strong></p>
+        
+        <div class="url-box">
+            <h2>📱 App-Link</h2>
+            <div class="url-text">
+                https://hb-montageservice-demo.vercel.app
+            </div>
+            <button onclick="copyURL()" class="download-btn">Link kopieren</button>
+            <a href="https://hb-montageservice-demo.vercel.app" target="_blank" class="download-btn">App öffnen</a>
+        </div>
+        
+        <div class="platform">
+            <h3>🤖 Android Installation</h3>
+            <div class="step">
+                <strong>Schritt 1:</strong> Chrome Browser auf Ihrem Android-Telefon öffnen
+            </div>
+            <div class="step">
+                <strong>Schritt 2:</strong> Diese URL eingeben:<br>
+                <code>https://hb-montageservice-demo.vercel.app</code>
+            </div>
+            <div class="step">
+                <strong>Schritt 3:</strong> Auf das Menü (⋮) oben rechts tippen
+            </div>
+            <div class="step">
+                <strong>Schritt 4:</strong> "App installieren" oder "Zum Startbildschirm hinzufügen" wählen
+            </div>
+            <div class="step">
+                <strong>Schritt 5:</strong> "Installieren" bestätigen
+            </div>
+        </div>
+        
+        <div class="platform">
+            <h3>🍎 iPhone/iPad Installation</h3>
+            <div class="step">
+                <strong>Schritt 1:</strong> Safari Browser auf Ihrem iPhone öffnen
+            </div>
+            <div class="step">
+                <strong>Schritt 2:</strong> Diese URL eingeben:<br>
+                <code>https://hb-montageservice-demo.vercel.app</code>
+            </div>
+            <div class="step">
+                <strong>Schritt 3:</strong> Auf das Teilen-Symbol (📤) unten tippen
+            </div>
+            <div class="step">
+                <strong>Schritt 4:</strong> "Zum Home-Bildschirm hinzufügen" wählen
+            </div>
+            <div class="step">
+                <strong>Schritt 5:</strong> "Hinzufügen" bestätigen
+            </div>
+        </div>
+        
+        <div class="platform">
+            <h3>💻 Desktop Installation</h3>
+            <div class="step">
+                <strong>Schritt 1:</strong> Chrome oder Edge Browser öffnen
+            </div>
+            <div class="step">
+                <strong>Schritt 2:</strong> Diese URL eingeben:<br>
+                <code>https://hb-montageservice-demo.vercel.app</code>
+            </div>
+            <div class="step">
+                <strong>Schritt 3:</strong> Auf das "App installieren" Symbol in der Adressleiste klicken
+            </div>
+            <div class="step">
+                <strong>Schritt 4:</strong> "Installieren" bestätigen
+            </div>
+        </div>
+        
+        <div class="qr-section">
+            <h3>📱 QR-Code scannen</h3>
+            <div id="qrcode" style="margin: 20px 0;"></div>
+            <p>Scannen Sie diesen QR-Code mit Ihrer Handy-Kamera für direkten Zugriff</p>
+        </div>
+        
+        <div class="url-box">
+            <h2>🔑 Anmeldedaten</h2>
+            <div style="text-align: left; margin: 20px 0;">
+                <p><strong>Benutzername:</strong> admin, kay, sebastian, denis oder subunternehmer</p>
+                <p><strong>Passwort:</strong> 123456</p>
+            </div>
+        </div>
+        
+        <div class="url-box">
+            <h2>📋 App Features</h2>
+            <ul class="features">
+                <li>Tägliche Montage-Aufträge verwalten</li>
+                <li>GPS-Navigation zu Kunden</li>
+                <li>Km-Abrechnung ab 30km (0,70€/km)</li>
+                <li>Automatische Rechnungs-Erstellung</li>
+                <li>Foto-Dokumentation</li>
+                <li>Offline-Funktionalität</li>
+                <li>Wochenkalender</li>
+                <li>Admin Panel für Kundenverwaltung</li>
+            </ul>
+        </div>
+        
+        <div class="url-box">
+            <h2>📞 Support & Kontakt</h2>
+            <p><strong>HB Montageservice</strong></p>
+            <p>📍 In der Wisch 1-3, 28205 Bremen</p>
+            <p>📞 Tel: 042189782524</p>
+            <p>📧 Email: hansa@bremer-montageservice.de</p>
+            <p>🕒 Öffnungszeiten: Mo-Fr 8:00-17:00</p>
+        </div>
+    </div>
+    
+    <script src="https://cdn.jsdelivr.net/npm/qrcode@1.5.3/build/qrcode.min.js"></script>
+    <script>
+        // QR-Code erstellen
+        window.onload = function() {
+            const url = 'https://hb-montageservice-demo.vercel.app';
+            QRCode.toCanvas(document.getElementById('qrcode'), url, {
+                width: 200,
+                height: 200,
+                colorDark: '#1e40af',
+                colorLight: '#ffffff',
+                margin: 2
+            }, function (error) {
+                if (error) {
+                    document.getElementById('qrcode').innerHTML = '<p>QR-Code konnte nicht geladen werden</p>';
+                }
+            });
+        };
+        
+        // URL kopieren
+        function copyURL() {
+            const url = 'https://hb-montageservice-demo.vercel.app';
+            navigator.clipboard.writeText(url).then(function() {
+                alert('URL wurde in die Zwischenablage kopiert!');
+            }, function(err) {
+                alert('URL: ' + url);
+            });
+        }
+        
+        // Automatische Weiterleitung nach 10 Sekunden
+        setTimeout(() => {
+            if (confirm('Möchten Sie zur HB Montageservice App weitergeleitet werden?')) {
+                window.open('https://hb-montageservice-demo.vercel.app', '_blank');
+            }
+        }, 10000);
+    </script>
+</body>
+</html>

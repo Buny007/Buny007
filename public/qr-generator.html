@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QR-Code Generator - HB Montageservice</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+            background: #f5f5f5;
+        }
+        .container {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+        .qr-code {
+            margin: 20px 0;
+            padding: 20px;
+            background: #f9f9f9;
+            border-radius: 8px;
+        }
+        input {
+            width: 100%;
+            padding: 12px;
+            margin: 10px 0;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+        button {
+            background: #1e40af;
+            color: white;
+            padding: 12px 24px;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            margin: 10px;
+        }
+        button:hover {
+            background: #1e3a8a;
+        }
+        .instructions {
+            text-align: left;
+            background: #e3f2fd;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>📱 HB Montageservice App</h1>
+        <h2>QR-Code zum Herunterladen auf das Telefon</h2>
+        
+        <div>
+            <label for="url">Geben Sie Ihre App-URL ein:</label>
+            <input type="url" id="url" placeholder="https://ihre-app.vercel.app" value="">
+            <button onclick="generateQR()">QR-Code erstellen</button>
+        </div>
+        
+        <div class="qr-code" id="qrcode">
+            <p>URL eingeben und QR-Code erstellen</p>
+        </div>
+        
+        <div class="instructions">
+            <h3>📋 Anleitung zum Herunterladen auf das Telefon:</h3>
+            <h4>Android:</h4>
+            <ol>
+                <li>QR-Code mit Ihrem Telefon scannen</li>
+                <li>In der geöffneten Chrome-Seite auf Menü (⋮) klicken</li>
+                <li>"App installieren" auswählen</li>
+                <li>Auf "Installieren" klicken</li>
+            </ol>
+            
+            <h4>iPhone:</h4>
+            <ol>
+                <li>QR-Code mit der Kamera scannen</li>
+                <li>In der geöffneten Safari-Seite auf Teilen (📤) klicken</li>
+                <li>"Zum Home-Bildschirm hinzufügen" auswählen</li>
+                <li>Auf "Hinzufügen" klicken</li>
+            </ol>
+        </div>
+        
+        <div style="margin-top: 30px; padding: 20px; background: #f0f9ff; border-radius: 8px;">
+            <h3>🏢 HB Montageservice</h3>
+            <p><strong>Adresse:</strong> In der Wisch 1-3, 28205 Bremen</p>
+            <p><strong>Telefon:</strong> 042189782524</p>
+            <p><strong>Email:</strong> hansa@bremer-montageservice.de</p>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/qrcode@1.5.3/build/qrcode.min.js"></script>
+    <script>
+        function generateQR() {
+            const url = document.getElementById('url').value;
+            const qrContainer = document.getElementById('qrcode');
+            
+            if (!url) {
+                alert('Bitte geben Sie eine URL ein!');
+                return;
+            }
+            
+            // QR-Code Container leeren
+            qrContainer.innerHTML = '';
+            
+            // QR-Code erstellen
+            QRCode.toCanvas(qrContainer, url, {
+                width: 256,
+                height: 256,
+                colorDark: '#1e40af',
+                colorLight: '#ffffff',
+                margin: 2
+            }, function (error) {
+                if (error) {
+                    console.error(error);
+                    qrContainer.innerHTML = '<p style="color: red;">QR-Code konnte nicht erstellt werden!</p>';
+                } else {
+                    // Download-Button hinzufügen
+                    const downloadBtn = document.createElement('button');
+                    downloadBtn.textContent = 'QR-Code herunterladen';
+                    downloadBtn.onclick = downloadQR;
+                    qrContainer.appendChild(document.createElement('br'));
+                    qrContainer.appendChild(downloadBtn);
+                    
+                    // URL anzeigen
+                    const urlDisplay = document.createElement('p');
+                    urlDisplay.innerHTML = `<strong>URL:</strong> ${url}`;
+                    urlDisplay.style.fontSize = '12px';
+                    urlDisplay.style.wordBreak = 'break-all';
+                    qrContainer.appendChild(urlDisplay);
+                }
+            });
+        }
+        
+        function downloadQR() {
+            const canvas = document.querySelector('#qrcode canvas');
+            if (canvas) {
+                const link = document.createElement('a');
+                link.download = 'hb-montageservice-qr.png';
+                link.href = canvas.toDataURL();
+                link.click();
+            }
+        }
+        
+        // Beispiel-URL beim Laden der Seite setzen
+        window.onload = function() {
+            // Falls auf localhost ausgeführt
+            if (window.location.hostname === 'localhost') {
+                document.getElementById('url').value = 'http://localhost:3000';
+            }
+        };
+    </script>
+</body>
+</html>
