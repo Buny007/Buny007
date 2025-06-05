@@ -11,6 +11,7 @@ const nextConfig = {
   images: {
     unoptimized: true,
   },
+  // Für GitHub Pages
   assetPrefix: process.env.NODE_ENV === "production" ? "/hb-montageservice" : "",
   basePath: process.env.NODE_ENV === "production" ? "/hb-montageservice" : "",
   distDir: "out",
